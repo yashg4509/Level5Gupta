@@ -12,19 +12,16 @@ public class FileDecryptor {
 	// the decrypted message to the user in a JOptionPane.
 	public static void main(String[] args) {
 		String message = "";
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader("src/_00_02_File_Encrypt_Decrypt/encrypted.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("src/_00_02_File_Encrypt_Decrypt/encrypted.txt"));
-
 			message = br.readLine();
-			while (message != null) {
-				message = br.readLine();
-			}
-
-			br.close();
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,7 +32,7 @@ public class FileDecryptor {
 		char ch;
 		String decryptedMessage = "";
 
-		for (int i = 0; i < message.length(); ++i) {
+		for (int i = 0; i < message.length(); i++) {
 			ch = message.charAt(i);
 
 			if (ch >= 'a' && ch <= 'z') {
