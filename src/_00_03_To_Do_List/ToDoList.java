@@ -118,19 +118,12 @@ public class ToDoList implements ActionListener {
 		if (e.getSource() == load) {
 			try {
 				BufferedReader br = new BufferedReader(new FileReader("src/_00_03_To_Do_List/savedtaskslists.txt"));
-				// ArrayList<String> saveL = new ArrayList<String>();
-				// saveL.size() = arr.size();
 				for (int i = 0; i < tasks.size(); i++) {
 					String line = br.readLine();
 					tasks.add(line);
-
-					while (line != null) {
-						System.out.println(line);
-						line = br.readLine();
-					}
 				}
 				for (int i = 0; i < tasks.size(); i++) {
-					System.out.println(tasks.get(i));
+					JOptionPane.showMessageDialog(null, tasks.get(i));
 				}
 
 				br.close();
