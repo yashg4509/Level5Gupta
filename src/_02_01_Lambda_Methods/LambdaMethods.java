@@ -1,5 +1,7 @@
 package _02_01_Lambda_Methods;
 
+import java.util.Random;
+
 public class LambdaMethods {
 	public static void main(String[] args) {
 		// 1. Look at the SpecialPrinter function interface.
@@ -34,16 +36,46 @@ public class LambdaMethods {
 		// 3. Call the printCustonMessage method using a lambda so that the String
 		// prints with a mix between upper an lower case characters.
 		printCustomMessage((s) -> {
-			char[] temp = s.toCharArray();
-			for (int i = 0; i < s.length(); i++) {
+			Random r = new Random();
+			int rnd;
 
+			for (int i = 0; i < s.length(); i++) {
+				rnd = r.nextInt(2);
+				if (rnd == 1) {
+					s = s.substring(0, i) + s.substring(i, i + 1).toUpperCase() + s.substring(i + 1, s.length());
+				}
 			}
+
+			System.out.println(s);
 		}, "repeat");
+		System.out.println("=============================================================================");
 		// 4. Call the printCustonMessage method using a lambda so that the String
 		// prints with a period in between each character.
+		printCustomMessage((s) -> {
+			String res = "";
 
+			for (int i = 0; i < s.length(); i++) {
+				char c = s.charAt(i);
+				res += c + ".";
+			}
+			System.out.println(res);
+
+		}, "repeat");
 		// 5. Call the printCustonMessage method using a lambda so that the String
 		// prints without any vowels.
+		printCustomMessage((s) -> {
+			String res = "";
+
+			for (int i = 0; i < s.length(); i++) {
+				char c = s.charAt(i);
+
+				if ((c == 'a') || (c == 'e') || (c == 'i') || (c == 'o') || (c == 'u')) {
+
+				}
+			}
+			System.out.println(res);
+
+		}, "repeat");
 
 	}
 
